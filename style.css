@@ -25,42 +25,30 @@ body {
     align-items: center;
 }
 
-/* #game {
-    border: 2px solid black;
-    background-image:  url(./assets/paysage.jpg);
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: sticky;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.platform {
-    position: absolute;
-    height: 10px;
-    width: 80px;
-    background-color: black;
-    border-radius: 10px;
-    z-index: 999;
-    transition: all 0.5s;
-}
-
-.perso {
-    position: absolute;
-    z-index: 999;
-    height: 70px;
-    width: 70px;
-    
-} */
 #game-canvas {
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('./assets/paysage.jpg');
+    border: #2e2e2e 2px solid;
+}
+
+.start {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.663);
+    padding: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .end-game-menu {
@@ -70,12 +58,13 @@ body {
     width: 300px;
     height: 200px;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.663);
     padding: 40px;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     text-align: center;
     display: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .end-game-score {
@@ -86,7 +75,6 @@ body {
 }
 
 button {
-    font-family: 'Press Start 2P', cursive;
     background-color: #2e2e2e;
     border: none;
     color: #fff;
@@ -94,12 +82,11 @@ button {
     font-size: 1em;
     margin-top: 15px;
     padding: 15px 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.25 ease;
+    border-radius: 10px;
+    transition: all 0.25s ease;
 }
 
 button:hover {
     background-color: #333;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }

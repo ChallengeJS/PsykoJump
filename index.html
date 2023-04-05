@@ -12,18 +12,18 @@
   <body>
 
     <div class="container">
-    <!-- <canvas width="375" height="667" id="game"></canvas> -->
-    <!-- <div class="grid"></div> -->
-
-    <!-- <img id="perso" src="./assets/personnage.png" alt=""> -->
-
     <div class="end-game-menu" id="end-game-menu">
         <h1>Game Over</h1>
         <p> Score: <span id="end-game-score"></span></p>
-        <p> Highscore: <span id="high-score"></span></p>
-        <button id="retry">Retry</button>
+        <p> Meilleur score: <span id="high-score"></span></p>
+        <button id="retry">Rejouer</button>
     </div>
-    <canvas id="game-canvas" width="500" height="500"></canvas>
+
+    <div class="start">
+        <h1>Psyko Jump</h1>
+        <button id="start">Commencer</button>
+    </div>
+    <canvas id="game-canvas" width="500" height="700"></canvas>
 </div>
 
     <script src="./script.js"></script>
