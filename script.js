@@ -178,30 +178,6 @@ function drawBalls() {
   requestAnimationFrame(drawBalls);
 }
 
-var magicarpe = new Image();
-magicarpe.src = "/assets/magicarp.png";
-
-// Position de départ de l'image
-var x = canvas.width / 2 - magicarpe.width / 2;
-var y = canvas.height - magicarpe.height;
-
-// Vitesse de déplacement de l'image
-var dx = 2;
-var dy = 0;
-
-// Amplitude et période de la fonction sinusoïdale
-var amplitude = 50;
-var period = 100;
-
-// Fonction pour dessiner l'image et la faire bouger en cloche
-function jumpMagicarpe() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.jumpMagicarp(magicarpe, x, y);
-  x += dx;
-  y = canvas.height - magicarpe.height / 2 + amplitude * Math.sin(x / period);
-  requestAnimationFrame(jumpMagicarpe);
-}
-
 // Personnage qui bouge avant le jeu
 var img = new Image();
 img.src = "/assets/personnage.png";
