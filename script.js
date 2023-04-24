@@ -20,8 +20,6 @@ class Doodler {
     this.jumpStrength = -4;
   }
 
-  // function which updates the position of the
-  // doodler
   updatePosition() {
     this.prevY = this.y;
     this.x += this.vx;
@@ -36,11 +34,6 @@ class Doodler {
     this.checkCollisionWithPlatforms();
   }
 
-  // function which checks whether
-  // our doodler is outside the canvas horizontally
-  // f.e. doodler leaves the canvas to the left
-  // he will enter back into it on the right
-  // and vice versa
   checkForWrapDoodler() {
     if (this.x + this.width < 0) {
       this.x = canvas.width;
@@ -49,17 +42,11 @@ class Doodler {
     }
   }
 
-  // now we need to add a hitcollision so our doodler can jump upwards
   checkCollisionWithPlatforms() {
-    // this here ensures that we only check if there is a collision
-    // while our doodler is falling down
     if (this.vy <= 0) {
       return;
     }
 
-    // we make sure that the doodler is coming from above the
-    // platform and the other conditions is a check whether
-    // two boxes intersect
     for (let i = 0; i < platForms.length; i++) {
       let platform = platForms[i];
       if (
@@ -75,8 +62,6 @@ class Doodler {
     }
   }
 
-  // this if in there ensures that our doodler does not jump too fast
-  // upwards, because we would lose him then
   jump(platform) {
     let newHeight = platform.y - this.height;
     if (newHeight > canvas.height / 2 - 120) {
@@ -101,9 +86,6 @@ class Doodler {
 }
 
 class Platform {
-  // constructor for the class platform
-  // x for the horizontal position and
-  // y for the vertical position
   constructor(x, y) {
     this.context = canvas.getContext("2d");
     this.image = new Image();
@@ -113,10 +95,6 @@ class Platform {
     this.width = 80;
     this.height = 20;
   }
-
-  // this updateposition works for the platforms
-  // we need to make them move downwards, so it seems like
-  // the doodler is going up!
 
   draw() {
     this.context.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -183,26 +161,25 @@ var img = new Image();
 img.src = "/assets/personnage.png";
 
 img.onload = function () {
-// Position de départ de l'image
-var x = canvas.width / 2 - img.width / 2;
-var y = canvas.height - img.height;
+  // Position de départ de l'image
+  var x = canvas.width / 2 - img.width / 2;
+  var y = canvas.height - img.height;
 
-// Vitesse de déplacement de l'image
-var dx = 2;
+  // Vitesse de déplacement de l'image
+  var dx = 2;
 
-// Fonction pour dessiner l'image et la faire bouger
-function drawImage() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(img, x, y);
-  x += dx;
-  if (x > canvas.width - img.width || x < 0) {
-    dx = -dx;
+  // Fonction pour dessiner l'image et la faire bouger
+  function drawImage() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, x, y);
+    x += dx;
+    if (x > canvas.width - img.width || x < 0) {
+      dx = -dx;
+    }
+    requestAnimationFrame(drawImage);
   }
-  requestAnimationFrame(drawImage);
-}
-drawImage();
-}
-//******************************* */
+  drawImage();
+};
 
 // Menu de fin de partie
 function showEndMenu() {
@@ -310,13 +287,10 @@ function loop() {
   doodler.context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (doodler.y < canvas.height / 2 && doodler.vy < 0) {
-    // we need to have it here and not in the platform class
-    // now we additionally need to create more platforms as we move up
     platForms.forEach((platform) => {
       platform.y += -doodler.vy * 3;
     });
 
-    // we create here infinitely more platforms if we move up
     platForms.push(
       new Platform(
         randomInteger(25, canvas.width - 25 - 100),
@@ -333,7 +307,6 @@ function loop() {
   });
 
   scoreText();
-  // here we check whether the doodler fell down below all platforms
   if (doodler.y > canvas.height) {
     showEndMenu();
     return;
